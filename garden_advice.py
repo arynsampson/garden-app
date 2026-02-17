@@ -1,3 +1,4 @@
+# List of seasons with advice
 season_data = [
     {
         "season": "summer",
@@ -25,6 +26,7 @@ season_data = [
     }
 ]
 
+# List of plant types with advice
 plant_data = [
     {
         "plant_type": "Flower",
@@ -56,14 +58,23 @@ plant_data = [
     }
 ]
 
-# TODO: Examples of possible features to add:
-# - Add detailed comments explaining each block of code.
-# - Refactor the code into functions for better readability and modularity.
-# - Store advice in a dictionary for multiple plants and seasons.
-# - Recommend plants based on the entered season.
-
 
 def get_advice(data_list, key, user_input):
+    """
+    Search a list of dictionaries for a matching value for either the season
+    or plant_type and return its advice.
+
+    Parameters:
+        data_list (list): List of dictionaries containing season,
+        plant_type and advice data.
+        key (str): Key that decides which data list to check
+        (e.g., 'season' or 'plant_type').
+        user_input (str): The users' input.
+
+    Returns:
+        str: The advice string for the matched item, or an empty string
+        if no match.
+    """
     for item in data_list:
         if item[key].lower() == user_input.lower():
             return item["advice"] + " "
@@ -71,6 +82,13 @@ def get_advice(data_list, key, user_input):
 
 
 def print_advice():
+    """
+    Prompt the user for a season and plant type, then print the
+    combined advice.
+
+    If no matching advice is found for either input, a default message
+    is displayed.
+    """
     season_input = input("Season: ")
     plant_type_input = input("Plant type: ")
     season_advice = get_advice(season_data, "season", season_input)
